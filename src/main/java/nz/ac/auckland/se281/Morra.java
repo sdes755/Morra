@@ -66,33 +66,35 @@ public class Morra {
     } else {
       MessageCli.PRINT_INFO_HAND.printMessage(
           players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
-    }
-    Gamemode gamemode = getModeFactory.getGamemode(gameMode);
-    int AIF = gamemode.getFingers();
-    int AIS = gamemode.getSum(rank, userF);
-    int totalF = fingers + AIF;
-    MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", Integer.toString(AIF), Integer.toString(AIS));
-    if (AIS != totalF && sum != totalF) {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
-    } else if (AIS == totalF && sum == totalF) {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
-    } else if (sum == totalF) {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
-      humanW++;
-    } else if (AIS == totalF) {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
-      AIW++;
-    }
 
-    if (humanW == toWin) {
-      MessageCli.END_GAME.printMessage(players.get(players.size() - 1), Integer.toString(rank - 1));
-      players.removeAll(players);
-      userF.removeAll(userF);
+      Gamemode gamemode = getModeFactory.getGamemode(gameMode);
+      int AIF = gamemode.getFingers();
+      int AIS = gamemode.getSum(rank, userF);
+      int totalF = fingers + AIF;
+      MessageCli.PRINT_INFO_HAND.printMessage(
+          "Jarvis", Integer.toString(AIF), Integer.toString(AIS));
+      if (AIS != totalF && sum != totalF) {
+        MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+      } else if (AIS == totalF && sum == totalF) {
+        MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+      } else if (sum == totalF) {
+        MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+        humanW++;
+      } else if (AIS == totalF) {
+        MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
+        AIW++;
+      }
 
-    } else if (AIW == toWin) {
-      MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
-      players.removeAll(players);
-      userF.removeAll(userF);
+      if (humanW == toWin) {
+        MessageCli.END_GAME.printMessage(
+            players.get(players.size() - 1), Integer.toString(rank - 1));
+        players.removeAll(players);
+        userF.removeAll(userF);
+      } else if (AIW == toWin) {
+        MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
+        players.removeAll(players);
+        userF.removeAll(userF);
+      }
     }
   }
 }
