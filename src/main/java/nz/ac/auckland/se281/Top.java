@@ -1,7 +1,6 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Top implements Strategy {
   int finger;
@@ -10,9 +9,6 @@ public class Top implements Strategy {
   int maxF = 5;
   int minS;
   int maxS;
-  int mostFrequent;
-  int mostFrequentCount;
-  int currentCount = 0;
 
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -22,33 +18,28 @@ public class Top implements Strategy {
   }
 
   public int getSum(int rank, ArrayList<Integer> userF) {
-    Collections.sort(userF);
-    System.out.println(userF);
-    int currentF = userF.get(0);
+    int element = userF.get(0);
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);
       return sum;
 
     } else {
-      for (int i = 1; i < userF.size() - 1; i++) {
-        int element = userF.get(i);
-        if (element == currentF) {
-          currentCount++;
-        } else {
-          if (currentCount > mostFrequentCount) {
-            mostFrequentCount = currentCount;
-            mostFrequent = currentF;
+      int maxCount = 0;
+      for (int i = 0; i < userF.size(); i++) {
+        int currentF = userF.get(i);
+        int currentCount = 1;
+        for (int j = i + 1; j < userF.size(); j++) {
+          if (userF.get(j) == currentF) {
+            currentCount++;
           }
-          currentF = element;
-          currentCount = 1;
         }
-        if (currentCount > mostFrequentCount) {
-          mostFrequent = currentF;
+        if (currentCount > maxCount) {
+          maxCount = currentCount;
+          element = currentF;
         }
       }
-
-      System.out.println(mostFrequent);
-      sum = mostFrequent + finger;
+      System.out.println(element);
+      sum = element + finger;
       return sum;
     }
   }
