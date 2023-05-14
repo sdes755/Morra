@@ -1,13 +1,17 @@
 package nz.ac.auckland.se281;
 
-public class RAT implements Strategy{
+import java.util.ArrayList;
 
-    int finger;
+public class RAT implements Strategy {
+
+  int finger;
   int sum;
   int minF = 1;
   int maxF = 5;
   int minS;
   int maxS;
+  float sumF = 0;
+  float count = 0;
 
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -17,12 +21,47 @@ public class RAT implements Strategy{
   }
 
   public int getSum(int rank, ArrayList<Integer> userF) {
-    int element = userF.get(0);
+    int fingers = finger;
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);
       return sum;
 
-    }
+    } else {
 
-    
+      System.out.println(rank - 1);
+      if (((rank - 1) % 2 == 0) == true) {
+
+        for (int i = 0; i < userF.size() - 1; i++) {
+          sumF = sumF + userF.get(i);
+          count++;
+        }
+        float average = sumF / count;
+        int avg = Math.round(average);
+        sum = avg + finger;
+        return sum;
+      } else {
+        System.out.println("Here");
+        int element = userF.get(0);
+        int maxCount = 0;
+        for (int i = 0; i < userF.size() - 1; i++) {
+          int currentF = userF.get(i);
+          int currentCount = 1;
+          for (int j = i + 1; j < userF.size() - 1; j++) {
+            if (userF.get(j) == currentF) {
+              currentCount++;
+            }
+          }
+          if (currentCount > maxCount) {
+            maxCount = currentCount;
+            element = currentF;
+          }
+        }
+        System.out.println(element);
+        System.out.println(finger);
+        
+        sum = element + fingers;
+        return sum;
+      }
+    }
+  }
 }

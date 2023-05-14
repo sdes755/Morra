@@ -11,6 +11,7 @@ public class Morra {
   private int rank = 1;
   private ArrayList<Integer> userF = new ArrayList<Integer>();
   private ArrayList<String> players = new ArrayList<String>();
+  private Difficulty gameMode;
 
   public Morra() {}
 
@@ -19,6 +20,7 @@ public class Morra {
     players.add(options[0]);
     rank = 1;
     userF.removeAll(userF);
+    gameMode = difficulty;
   }
 
   public void play() {
@@ -30,6 +32,7 @@ public class Morra {
   public void showStats() {}
 
   public void getFS() {
+
     MessageCli.ASK_INPUT.printMessage();
     String stats = Utils.scanner.nextLine();
     String[] statsArray = stats.split(" ");
@@ -43,12 +46,14 @@ public class Morra {
       MessageCli.PRINT_INFO_HAND.printMessage(
           players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
     }
-    Gamemode gamemode = getModeFactory.getGamemode(Difficulty.HARD);
+    Gamemode gamemode = getModeFactory.getGamemode(gameMode);
     int AIF = gamemode.getFingers();
     int AIS = gamemode.getSum(rank, userF);
     int totalF = fingers + AIF;
     MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", Integer.toString(AIF), Integer.toString(AIS));
     if (AIS != totalF && sum != totalF) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+    } else if (AIS == totalF && sum == totalF) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
     } else if (sum == totalF) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");

@@ -25,10 +25,10 @@ public class Top implements Strategy {
 
     } else {
       int maxCount = 0;
-      for (int i = 0; i < userF.size(); i++) {
+      for (int i = 0; i < userF.size() - 1; i++) {
         int currentF = userF.get(i);
         int currentCount = 1;
-        for (int j = i + 1; j < userF.size(); j++) {
+        for (int j = i + 1; j < userF.size() - 1; j++) {
           if (userF.get(j) == currentF) {
             currentCount++;
           }
