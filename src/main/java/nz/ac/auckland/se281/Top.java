@@ -10,9 +10,9 @@ public class Top implements Strategy {
   int maxF = 5;
   int minS;
   int maxS;
-  int count = 0;
-
-  private ArrayList<Integer> mostFrequent = new ArrayList<Integer>();
+  int mostFrequent;
+  int mostFrequentCount;
+  int currentCount = 0;
 
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -22,18 +22,33 @@ public class Top implements Strategy {
   }
 
   public int getSum(int rank, ArrayList<Integer> userF) {
-    System.out.println("I am here");
+    Collections.sort(userF);
+    System.out.println(userF);
+    int currentF = userF.get(0);
     if ((rank - 1) < 4) {
-      System.out.println("I am here");
       sum = Utils.getRandomNumber(minS, maxS);
       return sum;
 
     } else {
-      for (int i = 0; i < userF.size(); i++) {
-        int count = Collections.frequency(userF, userF.get(i));
-        mostFrequent.add(count);
+      for (int i = 1; i < userF.size() - 1; i++) {
+        int element = userF.get(i);
+        if (element == currentF) {
+          currentCount++;
+        } else {
+          if (currentCount > mostFrequentCount) {
+            mostFrequentCount = currentCount;
+            mostFrequent = currentF;
+          }
+          currentF = element;
+          currentCount = 1;
+        }
+        if (currentCount > mostFrequentCount) {
+          mostFrequent = currentF;
+        }
       }
+
       System.out.println(mostFrequent);
+      sum = mostFrequent + finger;
       return sum;
     }
   }
