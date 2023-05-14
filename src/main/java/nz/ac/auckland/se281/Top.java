@@ -1,8 +1,9 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Top {
+public class Top implements Strategy {
   int finger;
   int sum;
   int minF = 1;
@@ -21,21 +22,18 @@ public class Top {
   }
 
   public int getSum(int rank, ArrayList<Integer> userF) {
+    System.out.println("I am here");
     if ((rank - 1) < 4) {
+      System.out.println("I am here");
       sum = Utils.getRandomNumber(minS, maxS);
       return sum;
 
     } else {
-
       for (int i = 0; i < userF.size(); i++) {
-        for (int j = 0; j < userF.size(); j++) {
-          if (userF.get(i) == userF.get(j)) {
-            count++;
-          }
-        }
+        int count = Collections.frequency(userF, userF.get(i));
         mostFrequent.add(count);
       }
-
+      System.out.println(mostFrequent);
       return sum;
     }
   }

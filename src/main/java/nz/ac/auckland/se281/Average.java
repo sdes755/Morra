@@ -29,7 +29,6 @@ public class Average implements Strategy {
         sumF = sumF + userF.get(i);
         count++;
       }
-
       float average = sumF / count;
       int avg = Math.round(average);
       sum = avg + finger;

@@ -18,6 +18,7 @@ public class Morra {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     players.add(options[0]);
     rank = 1;
+    userF.removeAll(userF);
   }
 
   public void play() {
@@ -34,7 +35,6 @@ public class Morra {
     String[] statsArray = stats.split(" ");
     int fingers = Integer.parseInt(statsArray[0]);
     userF.add(fingers);
-    System.out.println(userF);
     int sum = Integer.parseInt(statsArray[1]);
     if (fingers < 0 || fingers > 5 || sum < 1 || sum > 10) {
       MessageCli.INVALID_INPUT.printMessage();
@@ -43,9 +43,8 @@ public class Morra {
       MessageCli.PRINT_INFO_HAND.printMessage(
           players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
     }
-    Gamemode gamemode = getModeFactory.getGamemode(Difficulty.MEDIUM);
+    Gamemode gamemode = getModeFactory.getGamemode(Difficulty.HARD);
     int AIF = gamemode.getFingers();
-    System.out.println("rank: " + rank);
     int AIS = gamemode.getSum(rank, userF);
     int totalF = fingers + AIF;
     MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", Integer.toString(AIF), Integer.toString(AIS));

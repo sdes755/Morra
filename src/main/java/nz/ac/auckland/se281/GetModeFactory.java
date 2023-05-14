@@ -9,7 +9,7 @@ public class GetModeFactory {
     } else if (difficulty == Difficulty.MEDIUM) {
       return new Medium();
     } else if (difficulty == Difficulty.HARD) {
-      // return new Hard();
+      return new Hard();
     }
     return null;
   }
