@@ -25,6 +25,8 @@ public class Morra {
     userF.removeAll(userF);
     gameMode = difficulty;
     toWin = pointsToWin;
+    humanW = 0;
+    AIW = 0;
   }
 
   public void play() {
@@ -37,7 +39,18 @@ public class Morra {
     }
   }
 
-  public void showStats() {}
+  public void showStats() {
+    if (players.size() != 0) {
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          players.get(players.size() - 1),
+          Integer.toString(humanW),
+          Integer.toString(toWin - humanW));
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          "Jarvis", Integer.toString(AIW), Integer.toString(toWin - AIW));
+    } else {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+    }
+  }
 
   public void getFS() {
 
@@ -72,13 +85,14 @@ public class Morra {
     }
 
     if (humanW == toWin) {
-      MessageCli.END_GAME.printMessage(players.get(players.size() - 1), Integer.toString(rank));
-    } else {
-      if (AIW == toWin) {
-        MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank));
-      } else {
-        play();
-      }
+      MessageCli.END_GAME.printMessage(players.get(players.size() - 1), Integer.toString(rank - 1));
+      players.removeAll(players);
+      userF.removeAll(userF);
+
+    } else if (AIW == toWin) {
+      MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
+      players.removeAll(players);
+      userF.removeAll(userF);
     }
   }
 }
