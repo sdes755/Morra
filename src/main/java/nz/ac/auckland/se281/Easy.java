@@ -4,14 +4,15 @@ public class Easy extends Gamemode implements Strategy {
   protected int finger;
   protected int sum;
   Strategy strategy;
+  Context context = new Context(new Random());
 
   public int getFingers() {
-    finger = strategy.getFingers();
+    finger = context.getFingers();
     return finger;
   }
 
   public int getSum() {
-    sum = strategy.getSum();
+    sum = context.getSum();
     return sum;
   }
 }
