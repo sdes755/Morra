@@ -27,8 +27,6 @@ public class RAT implements Strategy {
       return sum;
 
     } else {
-
-      System.out.println(rank - 1);
       if (((rank - 1) % 2 == 0) == true) {
 
         for (int i = 0; i < userF.size() - 1; i++) {
@@ -40,7 +38,6 @@ public class RAT implements Strategy {
         sum = avg + finger;
         return sum;
       } else {
-        System.out.println("Here");
         int element = userF.get(0);
         int maxCount = 0;
         for (int i = 0; i < userF.size() - 1; i++) {
@@ -56,9 +53,6 @@ public class RAT implements Strategy {
             element = currentF;
           }
         }
-        System.out.println(element);
-        System.out.println(finger);
-        
         sum = element + fingers;
         return sum;
       }

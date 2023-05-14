@@ -12,6 +12,9 @@ public class Morra {
   private ArrayList<Integer> userF = new ArrayList<Integer>();
   private ArrayList<String> players = new ArrayList<String>();
   private Difficulty gameMode;
+  private int toWin;
+  private int humanW = 0;
+  private int AIW = 0;
 
   public Morra() {}
 
@@ -21,12 +24,17 @@ public class Morra {
     rank = 1;
     userF.removeAll(userF);
     gameMode = difficulty;
+    toWin = pointsToWin;
   }
 
   public void play() {
-    MessageCli.START_ROUND.printMessage(Integer.toString(rank));
-    rank = rank + 1;
-    getFS();
+    if (players.size() != 0) {
+      MessageCli.START_ROUND.printMessage(Integer.toString(rank));
+      rank = rank + 1;
+      getFS();
+    } else {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+    }
   }
 
   public void showStats() {}
@@ -57,8 +65,20 @@ public class Morra {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
     } else if (sum == totalF) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+      humanW++;
     } else if (AIS == totalF) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
+      AIW++;
+    }
+
+    if (humanW == toWin) {
+      MessageCli.END_GAME.printMessage(players.get(players.size() - 1), Integer.toString(rank));
+    } else {
+      if (AIW == toWin) {
+        MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank));
+      } else {
+        play();
+      }
     }
   }
 }
