@@ -20,14 +20,11 @@ public class Average implements Strategy {
   }
 
   public int getSum(int rank, ArrayList<Integer> userF) {
-    System.out.println("rank 1: " + (rank - 1));
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);
-      System.out.println("I am here");
       return sum;
 
     } else {
-      System.out.println("I am here 2");
       for (int i = 0; i < userF.size() - 1; i++) {
         sumF = sumF + userF.get(i);
         count++;
