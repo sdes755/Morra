@@ -2,11 +2,11 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
-public class Easy extends Gamemode implements Strategy {
+public class Medium extends Gamemode implements Strategy {
   protected int finger;
   protected int sum;
   Strategy strategy;
-  Context context = new Context(new Random());
+  Context context = new Context(new Average());
 
   public int getFingers() {
     finger = context.getFingers();
