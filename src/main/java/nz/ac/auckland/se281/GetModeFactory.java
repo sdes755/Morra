@@ -10,6 +10,8 @@ public class GetModeFactory {
       return new Medium();
     } else if (difficulty == Difficulty.HARD) {
       return new Hard();
+    } else if (difficulty == Difficulty.MASTER) {
+      return new Master();
     }
     return null;
   }
