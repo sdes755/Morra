@@ -56,49 +56,54 @@ public class Morra {
 
     MessageCli.ASK_INPUT.printMessage();
     String stats = Utils.scanner.nextLine();
-    String[] statsArray = stats.split(" ");
-    if (statsArray[0].contains(".") || statsArray[1].contains(".")) {
+    if (stats.length() != 3 && stats.length() != 4) {
       MessageCli.INVALID_INPUT.printMessage();
       getFS();
     } else {
-      int fingers = Integer.parseInt(statsArray[0]);
-      userF.add(fingers);
-      int sum = Integer.parseInt(statsArray[1]);
-
-      if (fingers < 0 || fingers > 5 || sum < 1 || sum > 10) {
+      String[] statsArray = stats.split(" ");
+      if (statsArray[0].contains(".") || statsArray[1].contains(".") || statsArray.length != 2) {
         MessageCli.INVALID_INPUT.printMessage();
         getFS();
       } else {
-        MessageCli.PRINT_INFO_HAND.printMessage(
-            players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
+        int fingers = Integer.parseInt(statsArray[0]);
+        userF.add(fingers);
+        int sum = Integer.parseInt(statsArray[1]);
 
-        Gamemode gamemode = getModeFactory.getGamemode(gameMode);
-        int AIF = gamemode.getFingers();
-        int AIS = gamemode.getSum(rank, userF);
-        int totalF = fingers + AIF;
-        MessageCli.PRINT_INFO_HAND.printMessage(
-            "Jarvis", Integer.toString(AIF), Integer.toString(AIS));
-        if (AIS != totalF && sum != totalF) {
-          MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
-        } else if (AIS == totalF && sum == totalF) {
-          MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
-        } else if (sum == totalF) {
-          MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
-          humanW++;
-        } else if (AIS == totalF) {
-          MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
-          AIW++;
-        }
+        if (fingers < 0 || fingers > 5 || sum < 1 || sum > 10) {
+          MessageCli.INVALID_INPUT.printMessage();
+          getFS();
+        } else {
+          MessageCli.PRINT_INFO_HAND.printMessage(
+              players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
 
-        if (humanW == toWin) {
-          MessageCli.END_GAME.printMessage(
-              players.get(players.size() - 1), Integer.toString(rank - 1));
-          players.removeAll(players);
-          userF.removeAll(userF);
-        } else if (AIW == toWin) {
-          MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
-          players.removeAll(players);
-          userF.removeAll(userF);
+          Gamemode gamemode = getModeFactory.getGamemode(gameMode);
+          int AIF = gamemode.getFingers();
+          int AIS = gamemode.getSum(rank, userF);
+          int totalF = fingers + AIF;
+          MessageCli.PRINT_INFO_HAND.printMessage(
+              "Jarvis", Integer.toString(AIF), Integer.toString(AIS));
+          if (AIS != totalF && sum != totalF) {
+            MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+          } else if (AIS == totalF && sum == totalF) {
+            MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+          } else if (sum == totalF) {
+            MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+            humanW++;
+          } else if (AIS == totalF) {
+            MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
+            AIW++;
+          }
+
+          if (humanW == toWin) {
+            MessageCli.END_GAME.printMessage(
+                players.get(players.size() - 1), Integer.toString(rank - 1));
+            players.removeAll(players);
+            userF.removeAll(userF);
+          } else if (AIW == toWin) {
+            MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
+            players.removeAll(players);
+            userF.removeAll(userF);
+          }
         }
       }
     }
