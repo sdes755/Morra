@@ -56,7 +56,7 @@ public class Morra {
 
     MessageCli.ASK_INPUT.printMessage();
     String stats = Utils.scanner.nextLine();
-    if (stats.length() != 3 && stats.length() != 4) {
+    if (stats.contains(" ") == false) {
       MessageCli.INVALID_INPUT.printMessage();
       getFS();
     } else {
