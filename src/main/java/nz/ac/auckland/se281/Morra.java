@@ -56,12 +56,17 @@ public class Morra {
 
     MessageCli.ASK_INPUT.printMessage();
     String stats = Utils.scanner.nextLine();
+    stats = stats.trim();
     if (stats.contains(" ") == false) {
       MessageCli.INVALID_INPUT.printMessage();
       getFS();
     } else {
       String[] statsArray = stats.split(" ");
-      if (statsArray[0].contains(".") || statsArray[1].contains(".") || statsArray.length != 2) {
+      if (statsArray[0].contains(".")
+          || statsArray[1].contains(".")
+          || statsArray.length != 2
+          || Utils.isInteger(statsArray[0]) == false
+          || Utils.isInteger(statsArray[1]) == false) {
         MessageCli.INVALID_INPUT.printMessage();
         getFS();
       } else {
