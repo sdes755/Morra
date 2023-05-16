@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281;
 
-// import java.lang.reflect.Array;
-
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -57,6 +55,7 @@ public class Morra {
     MessageCli.ASK_INPUT.printMessage();
     String stats = Utils.scanner.nextLine();
     stats = stats.trim();
+    stats = stats.replaceAll("\\s{2,}", " ");
     if (stats.contains(" ") == false) {
       MessageCli.INVALID_INPUT.printMessage();
       getFS();
