@@ -19,6 +19,7 @@ public class Average implements Strategy {
     return finger;
   }
 
+  @Override
   public int getSum(int rank, ArrayList<Integer> userF) {
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);

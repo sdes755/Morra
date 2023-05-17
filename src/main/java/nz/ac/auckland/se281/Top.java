@@ -16,7 +16,7 @@ public class Top implements Strategy {
     minS = finger + 1;
     return finger;
   }
-
+@Override
   public int getSum(int rank, ArrayList<Integer> userF) {
     int element = userF.get(0);
     if ((rank - 1) < 4) {

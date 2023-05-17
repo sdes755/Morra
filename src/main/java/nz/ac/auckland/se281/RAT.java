@@ -20,6 +20,7 @@ public class RAT implements Strategy {
     return finger;
   }
 
+  @Override
   public int getSum(int rank, ArrayList<Integer> userF) {
     int fingers = finger;
     if ((rank - 1) < 4) {

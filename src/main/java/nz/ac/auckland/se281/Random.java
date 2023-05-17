@@ -17,6 +17,7 @@ public class Random implements Strategy {
     return finger;
   }
 
+  @Override
   public int getSum(int rank, ArrayList<Integer> userF) {
     sum = Utils.getRandomNumber(minS, maxS);
     return sum;
