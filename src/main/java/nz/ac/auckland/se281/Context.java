@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
-
 public class Context {
   private Strategy strategy;
 
@@ -13,7 +11,7 @@ public class Context {
     return strategy.getFingers();
   }
 
-  public int getSum(int rank, ArrayList<Integer> userF) {
-    return strategy.getSum(rank,userF) ;
+  public int getSum() {
+    return strategy.getSum();
   }
 }

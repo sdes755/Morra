@@ -6,16 +6,24 @@ public class Master extends Gamemode implements Strategy {
 
   protected int finger;
   protected int sum;
-  Strategy strategy;
-  Context context = new Context(new RAT());
+  protected int rank;
+  protected ArrayList<Integer> userF;
+
+  private Context context;
+
+  public Master(ArrayList<Integer> userF, int rank) {
+    this.userF = userF;
+    this.rank = rank;
+    this.context = new Context(new RAT(userF, rank));
+  }
 
   public int getFingers() {
     finger = context.getFingers();
     return finger;
   }
 
-  public int getSum(int rank, ArrayList<Integer> userF) {
-    sum = context.getSum(rank, userF);
+  public int getSum() {
+    sum = context.getSum();
     return sum;
   }
 }

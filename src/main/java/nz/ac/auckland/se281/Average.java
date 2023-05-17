@@ -11,6 +11,13 @@ public class Average implements Strategy {
   int maxS;
   float count = 0;
   float sumF = 0;
+  int rank;
+  ArrayList<Integer> userF;
+
+  public Average(ArrayList<Integer> userF, int rank) {
+    this.userF = userF;
+    this.rank = rank;
+  }
 
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -20,7 +27,8 @@ public class Average implements Strategy {
   }
 
   @Override
-  public int getSum(int rank, ArrayList<Integer> userF) {
+  public int getSum() {
+
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);
       return sum;

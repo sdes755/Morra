@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
-
 public class Random implements Strategy {
   int finger;
   int sum;
@@ -18,7 +16,7 @@ public class Random implements Strategy {
   }
 
   @Override
-  public int getSum(int rank, ArrayList<Integer> userF) {
+  public int getSum() {
     sum = Utils.getRandomNumber(minS, maxS);
     return sum;
   }

@@ -12,6 +12,13 @@ public class RAT implements Strategy {
   int maxS;
   float sumF = 0;
   float count = 0;
+  ArrayList<Integer> userF;
+  int rank;
+
+  public RAT(ArrayList<Integer> userF, int rank) {
+    this.userF = userF;
+    this.rank = rank;
+  }
 
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -21,7 +28,7 @@ public class RAT implements Strategy {
   }
 
   @Override
-  public int getSum(int rank, ArrayList<Integer> userF) {
+  public int getSum() {
     int fingers = finger;
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);

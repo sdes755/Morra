@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
-
 public class Easy extends Gamemode implements Strategy {
   protected int finger;
   protected int sum;
@@ -13,8 +11,8 @@ public class Easy extends Gamemode implements Strategy {
     return finger;
   }
 
-  public int getSum(int rank, ArrayList<Integer> userF) {
-    sum = context.getSum(rank, userF);
+  public int getSum() {
+    sum = context.getSum();
     return sum;
   }
 }

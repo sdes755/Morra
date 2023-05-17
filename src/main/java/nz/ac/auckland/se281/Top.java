@@ -9,6 +9,13 @@ public class Top implements Strategy {
   int maxF = 5;
   int minS;
   int maxS;
+  ArrayList<Integer> userF;
+  int rank;
+
+  public Top(ArrayList<Integer> userF, int rank) {
+    this.userF = userF;
+    this.rank = rank;
+  }
 
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -16,8 +23,9 @@ public class Top implements Strategy {
     minS = finger + 1;
     return finger;
   }
-@Override
-  public int getSum(int rank, ArrayList<Integer> userF) {
+
+  @Override
+  public int getSum() {
     int element = userF.get(0);
     if ((rank - 1) < 4) {
       sum = Utils.getRandomNumber(minS, maxS);

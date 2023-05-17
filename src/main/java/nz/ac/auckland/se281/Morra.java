@@ -79,9 +79,9 @@ public class Morra {
           MessageCli.PRINT_INFO_HAND.printMessage(
               players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
 
-          Gamemode gamemode = getModeFactory.getGamemode(gameMode);
+          Gamemode gamemode = getModeFactory.getGamemode(gameMode, userF, rank);
           int AIF = gamemode.getFingers();
-          int AIS = gamemode.getSum(rank, userF);
+          int AIS = gamemode.getSum();
           int totalF = fingers + AIF;
           MessageCli.PRINT_INFO_HAND.printMessage(
               "Jarvis", Integer.toString(AIF), Integer.toString(AIS));
