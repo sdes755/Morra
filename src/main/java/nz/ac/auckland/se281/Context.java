@@ -7,6 +7,10 @@ public class Context {
     this.strategy = strategy;
   }
 
+  public void setContext(Strategy strategy) {
+    this.strategy = strategy;
+  }
+
   public int getFingers() {
     return strategy.getFingers();
   }
