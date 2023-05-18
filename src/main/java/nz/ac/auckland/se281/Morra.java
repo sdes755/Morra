@@ -5,7 +5,6 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
 
-  GetModeFactory getModeFactory = new GetModeFactory();
   private int rank = 1;
   private ArrayList<Integer> userF = new ArrayList<Integer>();
   private ArrayList<String> players = new ArrayList<String>();
@@ -79,7 +78,7 @@ public class Morra {
           MessageCli.PRINT_INFO_HAND.printMessage(
               players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
 
-          Gamemode gamemode = getModeFactory.getGamemode(gameMode, userF, rank);
+          Gamemode gamemode = GetModeFactory.getGamemode(gameMode, userF, rank);
           int AIF = gamemode.getFingers();
           int AIS = gamemode.getSum();
           int totalF = fingers + AIF;

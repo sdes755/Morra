@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Difficulty;
 
 public class GetModeFactory {
-  public Gamemode getGamemode(Difficulty difficulty, ArrayList<Integer> fingers, int rank) {
+  public static Gamemode getGamemode(Difficulty difficulty, ArrayList<Integer> fingers, int rank) {
 
     if (difficulty == Difficulty.EASY) {
       return new Easy();
