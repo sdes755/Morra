@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
-public class Medium extends Gamemode implements Strategy {
+public class Medium extends Gamemode {
   protected int finger;
   protected int sum;
   protected int rank;

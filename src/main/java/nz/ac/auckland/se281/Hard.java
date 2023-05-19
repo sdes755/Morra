@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
-public class Hard extends Gamemode implements Strategy {
+public class Hard extends Gamemode {
   protected int finger;
   protected int sum;
   protected ArrayList<Integer> userF;

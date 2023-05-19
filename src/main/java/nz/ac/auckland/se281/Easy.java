@@ -1,6 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class Easy extends Gamemode implements Strategy {
+public class Easy extends Gamemode {
   protected int finger;
   protected int sum;
   private Context context = new Context(new Random());

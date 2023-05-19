@@ -11,7 +11,7 @@ public class Morra {
   private Difficulty gameMode;
   private int toWin;
   private int humanW = 0;
-  private int AI_WINS = 0;
+  private int aiWins = 0;
 
   public Morra() {}
 
@@ -23,7 +23,7 @@ public class Morra {
     gameMode = difficulty;
     toWin = pointsToWin;
     humanW = 0;
-    AI_WINS = 0;
+    aiWins = 0;
   }
 
   public void play() {
@@ -43,7 +43,7 @@ public class Morra {
           Integer.toString(humanW),
           Integer.toString(toWin - humanW));
       MessageCli.PRINT_PLAYER_WINS.printMessage(
-          "Jarvis", Integer.toString(AI_WINS), Integer.toString(toWin - AI_WINS));
+          "Jarvis", Integer.toString(aiWins), Integer.toString(toWin - aiWins));
     } else {
       MessageCli.GAME_NOT_STARTED.printMessage();
     }
@@ -92,8 +92,8 @@ public class Morra {
             MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
             humanW++;
           } else if (aiSum == totalF) {
-            MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
-            AI_WINS++;
+            MessageCli.PRINT_OUTCOME_ROUND.printMessage("aiWins");
+            aiWins++;
           }
 
           if (humanW == toWin) {
@@ -101,7 +101,7 @@ public class Morra {
                 players.get(players.size() - 1), Integer.toString(rank - 1));
             players.removeAll(players);
             userF.removeAll(userF);
-          } else if (AI_WINS == toWin) {
+          } else if (aiWins == toWin) {
             MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
             players.removeAll(players);
             userF.removeAll(userF);
