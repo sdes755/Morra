@@ -92,7 +92,7 @@ public class Morra {
             MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
             humanW++;
           } else if (aiSum == totalF) {
-            MessageCli.PRINT_OUTCOME_ROUND.printMessage("aiWins");
+            MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
             aiWins++;
           }
 
