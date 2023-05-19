@@ -8,6 +8,7 @@ public class Random implements Strategy {
   int maxS;
   int minS;
 
+  @Override
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
     maxS = finger + 5;

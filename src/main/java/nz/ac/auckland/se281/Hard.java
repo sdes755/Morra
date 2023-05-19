@@ -13,7 +13,11 @@ public class Hard extends Gamemode implements Strategy {
   public Hard(ArrayList<Integer> userF, int rank) {
     this.userF = userF;
     this.rank = rank;
-    this.context = new Context(new Top(userF, rank));
+    if ((rank - 1) <= 3) {
+      this.context = new Context(new Random());
+    } else {
+      this.context = new Context(new Top(userF));
+    }
   }
 
   public int getFingers() {

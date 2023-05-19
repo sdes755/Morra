@@ -15,11 +15,11 @@ public class Master extends Gamemode implements Strategy {
     this.userF = userF;
     this.rank = rank;
     if ((rank - 1) <= 3) {
-      context = new Context(new Random());
+      this.context = new Context(new Random());
     } else if ((rank - 1) % 2 == 0) {
-      context = new Context(new Average(userF, rank));
+      this.context = new Context(new Average(userF));
     } else {
-      context = new Context(new Top(userF, rank));
+      this.context = new Context(new Top(userF));
     }
   }
 

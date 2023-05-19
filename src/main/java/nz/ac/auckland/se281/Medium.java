@@ -12,7 +12,11 @@ public class Medium extends Gamemode implements Strategy {
   public Medium(ArrayList<Integer> userF, int rank) {
     this.userF = userF;
     this.rank = rank;
-    this.context = new Context(new Average(userF, rank));
+    if ((rank - 1) <= 3) {
+      this.context = new Context(new Random());
+    } else {
+      this.context = new Context(new Average(userF));
+    }
   }
 
   public int getFingers() {
