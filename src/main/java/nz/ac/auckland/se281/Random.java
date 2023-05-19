@@ -1,12 +1,12 @@
 package nz.ac.auckland.se281;
 
 public class Random implements Strategy {
-  int finger;
-  int sum;
-  int minF = 1;
-  int maxF = 5;
-  int maxS;
-  int minS;
+  private int finger;
+  private int sum;
+  private int minF = 1;
+  private int maxF = 5;
+  private int maxS;
+  private int minS;
 
   @Override
   public int getFingers() {

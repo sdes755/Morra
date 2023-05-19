@@ -11,7 +11,7 @@ public class Morra {
   private Difficulty gameMode;
   private int toWin;
   private int humanW = 0;
-  private int AIW = 0;
+  private int AI_WINS = 0;
 
   public Morra() {}
 
@@ -23,14 +23,14 @@ public class Morra {
     gameMode = difficulty;
     toWin = pointsToWin;
     humanW = 0;
-    AIW = 0;
+    AI_WINS = 0;
   }
 
   public void play() {
     if (players.size() != 0) {
       MessageCli.START_ROUND.printMessage(Integer.toString(rank));
       rank = rank + 1;
-      getFS();
+      getStats();
     } else {
       MessageCli.GAME_NOT_STARTED.printMessage();
     }
@@ -43,20 +43,20 @@ public class Morra {
           Integer.toString(humanW),
           Integer.toString(toWin - humanW));
       MessageCli.PRINT_PLAYER_WINS.printMessage(
-          "Jarvis", Integer.toString(AIW), Integer.toString(toWin - AIW));
+          "Jarvis", Integer.toString(AI_WINS), Integer.toString(toWin - AI_WINS));
     } else {
       MessageCli.GAME_NOT_STARTED.printMessage();
     }
   }
 
-  public void getFS() {
+  public void getStats() {
 
     MessageCli.ASK_INPUT.printMessage();
     String stats = Utils.scanner.nextLine();
     stats = stats.trim();
     if (stats.contains(" ") == false) {
       MessageCli.INVALID_INPUT.printMessage();
-      getFS();
+      getStats();
     } else {
       String[] statsArray = stats.split(" ");
       if (statsArray[0].contains(".")
@@ -65,7 +65,7 @@ public class Morra {
           || Utils.isInteger(statsArray[0]) == false
           || Utils.isInteger(statsArray[1]) == false) {
         MessageCli.INVALID_INPUT.printMessage();
-        getFS();
+        getStats();
       } else {
         int fingers = Integer.parseInt(statsArray[0]);
         userF.add(fingers);
@@ -73,27 +73,27 @@ public class Morra {
 
         if (fingers < 0 || fingers > 5 || sum < 1 || sum > 10) {
           MessageCli.INVALID_INPUT.printMessage();
-          getFS();
+          getStats();
         } else {
           MessageCli.PRINT_INFO_HAND.printMessage(
               players.get(players.size() - 1), Integer.toString(fingers), Integer.toString(sum));
 
           Gamemode gamemode = GetModeFactory.getGamemode(gameMode, userF, rank);
-          int AIF = gamemode.getFingers();
-          int AIS = gamemode.getSum();
-          int totalF = fingers + AIF;
+          int aiFingers = gamemode.getFingers();
+          int aiSum = gamemode.getSum();
+          int totalF = fingers + aiFingers;
           MessageCli.PRINT_INFO_HAND.printMessage(
-              "Jarvis", Integer.toString(AIF), Integer.toString(AIS));
-          if (AIS != totalF && sum != totalF) {
+              "Jarvis", Integer.toString(aiFingers), Integer.toString(aiSum));
+          if (aiSum != totalF && sum != totalF) {
             MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
-          } else if (AIS == totalF && sum == totalF) {
+          } else if (aiSum == totalF && sum == totalF) {
             MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
           } else if (sum == totalF) {
             MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
             humanW++;
-          } else if (AIS == totalF) {
+          } else if (aiSum == totalF) {
             MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
-            AIW++;
+            AI_WINS++;
           }
 
           if (humanW == toWin) {
@@ -101,7 +101,7 @@ public class Morra {
                 players.get(players.size() - 1), Integer.toString(rank - 1));
             players.removeAll(players);
             userF.removeAll(userF);
-          } else if (AIW == toWin) {
+          } else if (AI_WINS == toWin) {
             MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(rank - 1));
             players.removeAll(players);
             userF.removeAll(userF);

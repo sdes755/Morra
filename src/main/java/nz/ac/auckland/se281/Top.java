@@ -3,13 +3,11 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public class Top implements Strategy {
-  int finger;
-  int sum;
-  int minF = 1;
-  int maxF = 5;
-  int minS;
-  int maxS;
-  ArrayList<Integer> userF;
+  private int finger;
+  private int sum;
+  private int minF = 1;
+  private int maxF = 5;
+  private ArrayList<Integer> userF;
 
   public Top(ArrayList<Integer> userF) {
     this.userF = userF;
@@ -18,8 +16,6 @@ public class Top implements Strategy {
   @Override
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
-    maxS = finger + 5;
-    minS = finger + 1;
     return finger;
   }
 

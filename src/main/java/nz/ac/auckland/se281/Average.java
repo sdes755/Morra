@@ -3,15 +3,13 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public class Average implements Strategy {
-  int finger;
-  int sum;
-  int minF = 1;
-  int maxF = 5;
-  int minS;
-  int maxS;
-  float count = 0;
-  float sumF = 0;
-  ArrayList<Integer> userF;
+  private int finger;
+  private int sum;
+  private int minF = 1;
+  private int maxF = 5;
+  private float count = 0;
+  private float sumF = 0;
+  private ArrayList<Integer> userF;
 
   public Average(ArrayList<Integer> userF) {
     this.userF = userF;
@@ -20,8 +18,6 @@ public class Average implements Strategy {
   @Override
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
-    maxS = finger + 5;
-    minS = finger + 1;
     return finger;
   }
 
