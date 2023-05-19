@@ -14,7 +14,13 @@ public class Master extends Gamemode implements Strategy {
   public Master(ArrayList<Integer> userF, int rank) {
     this.userF = userF;
     this.rank = rank;
-    this.context = new Context(new RAT(userF, rank));
+    if ((rank - 1) <= 3) {
+      context = new Context(new Random());
+    } else if ((rank - 1) % 2 == 0) {
+      context = new Context(new Average(userF, rank));
+    } else {
+      context = new Context(new Top(userF, rank));
+    }
   }
 
   public int getFingers() {
