@@ -26,6 +26,7 @@ public class Top implements Strategy {
   // Calculating the AI sum and returning it
   @Override
   public int getSum() {
+    // The for loop below is used to find the most frequent element in the arraylist
     int element = userF.get(0);
     int maxCount = 0;
     for (int i = 0; i < userF.size() - 1; i++) {
@@ -41,6 +42,7 @@ public class Top implements Strategy {
         element = currentF;
       }
     }
+    // After finding the most frequent, it is added to the AI finger to return sum
     sum = element + finger;
     return sum;
   }

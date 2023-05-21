@@ -30,13 +30,15 @@ public class Average implements Strategy {
   // And returning it
   @Override
   public int getSum() {
-
+    // Finding the average of the user finger inputs
     for (int i = 0; i < userF.size() - 1; i++) {
       sumF = sumF + userF.get(i);
       count++;
     }
+    // Calculating the average and rounding it to the nearest integer
     float average = sumF / count;
     int avg = Math.round(average);
+    // Adding it to the AI finger and returning it as the sum
     sum = avg + finger;
     return sum;
   }
