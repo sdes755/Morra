@@ -87,7 +87,7 @@ public class Morra {
         userF.add(fingers);
         int sum = Integer.parseInt(statsArray[1]);
         // Checking for valid input of the fingers and sum
-        if (fingers < 0 || fingers > 5 || sum < 1 || sum > 10) {
+        if (fingers < 1 || fingers > 5 || sum < 1 || sum > 10) {
           MessageCli.INVALID_INPUT.printMessage();
           getStats();
         } else {
