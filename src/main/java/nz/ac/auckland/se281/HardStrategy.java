@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
-public class Hard extends Gamemode {
+public class HardStrategy extends Gamemode {
   protected int finger;
   protected int sum;
   protected ArrayList<Integer> userF;
@@ -10,7 +10,7 @@ public class Hard extends Gamemode {
 
   private Context context;
 
-  public Hard(ArrayList<Integer> userF, int rank) {
+  public HardStrategy(ArrayList<Integer> userF, int rank) {
     this.userF = userF;
     this.rank = rank;
     if ((rank - 1) <= 3) {

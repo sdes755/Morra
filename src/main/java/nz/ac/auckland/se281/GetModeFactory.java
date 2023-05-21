@@ -11,7 +11,7 @@ public class GetModeFactory {
     } else if (difficulty == Difficulty.MEDIUM) {
       return new Medium(fingers, rank);
     } else if (difficulty == Difficulty.HARD) {
-      return new Hard(fingers, rank);
+      return new HardStrategy(fingers, rank);
     } else if (difficulty == Difficulty.MASTER) {
       return new Master(fingers, rank);
     }
