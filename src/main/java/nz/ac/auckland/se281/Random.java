@@ -1,6 +1,8 @@
 package nz.ac.auckland.se281;
 
 public class Random implements Strategy {
+  // EASY GAME MODE
+  // Intialising variables required for the calculation of AI's fingers and sum
   private int finger;
   private int sum;
   private int minF = 1;
@@ -8,6 +10,7 @@ public class Random implements Strategy {
   private int maxS;
   private int minS;
 
+  // Calculating the AI fingers and sum and returning it
   @Override
   public int getFingers() {
     finger = Utils.getRandomNumber(minF, maxF);
@@ -16,6 +19,7 @@ public class Random implements Strategy {
     return finger;
   }
 
+  // Calculating the AI sum and returning it
   @Override
   public int getSum() {
     sum = Utils.getRandomNumber(minS, maxS);
