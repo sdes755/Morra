@@ -7,7 +7,7 @@ public class GetModeFactory {
   public static Gamemode getGamemode(Difficulty difficulty, ArrayList<Integer> fingers, int rank) {
 
     if (difficulty == Difficulty.EASY) {
-      return new Easy();
+      return new EasyStrategy();
     } else if (difficulty == Difficulty.MEDIUM) {
       return new Medium(fingers, rank);
     } else if (difficulty == Difficulty.HARD) {
